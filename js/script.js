@@ -1,4 +1,4 @@
-function addMember (newMember, container) {
+function addMemberCard (newMember, container) {
   // creiamo la carta
   const card = document.createElement('div');
   card.className = 'team-card';
@@ -67,7 +67,7 @@ const teamContainerHtml = document.querySelector('.team-container')
 
 for (let i = 0; i < team.length; i++) {
   const currentTeamMember = team[i];
-  addMember(currentTeamMember, teamContainerHtml);
+  addMemberCard(currentTeamMember, teamContainerHtml);
 }
 
 const formButtonHtml = document.getElementById('addMemberButton');
@@ -79,6 +79,9 @@ formButtonHtml.addEventListener('click', function () {
   formInputHtml.forEach(element => {
     newMember[element.id] = element.value;
   });
-  
-  addMember(newMember, teamContainerHtml);
+
+  // aggiungiamo i dati del nuovo membro nell'array
+  team.push(newMember);
+  // aggiungiamo la nuova card 
+  addMemberCard(newMember, teamContainerHtml);
 })
